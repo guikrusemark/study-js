@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JS2</title>
+
+</head>
+
+<body>
+
+    <canvas width="600" height="400"></canvas>
+
+    <script>
+        let canvas = document.querySelector('canvas');
+        let brush = canvas.getContext('2d');
+
+        brush.fillStyle = 'lightgrey';
+        brush.fillRect(0, 0, 600, 400);
+        var radius = 10;
+
+        function desenharPonto(event) {
+            if (event.shiftKey) {
+                radius = radius + 0.1;
+            }
+            brush.fillStyle = 'red';
+            brush.beginPath();
+            brush.arc(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop, radius, 0, 2 * Math.PI);
+            brush.fill();
+        }
+        canvas.onmousedown = (event) => {
+            canvas.addEventListener('mouseover', desenharPonto);
+            canvas.addEventListener('mousemove', desenharPonto);
+        }
+        canvas.onmouseup = (event) => {
+            canvas.removeEventListener('mouseover', desenharPonto);
+            canvas.removeEventListener('mousemove', desenharPonto);
+        }
+    </script>
+
+</body>
+
+</html>

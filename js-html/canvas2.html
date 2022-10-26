@@ -26,19 +26,16 @@
             if (event.shiftKey) {
                 radius = radius + 0.1;
             }
-            brush.fillStyle = 'red';
+            brush.fillStyle = () => 'red';
             brush.beginPath();
             brush.arc(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop, radius, 0, 2 * Math.PI);
             brush.fill();
         }
-        canvas.onmousedown = (event) => {
-            canvas.addEventListener('mouseover', desenharPonto);
+        
+        canvas.onmousedown = function(event) {
             canvas.addEventListener('mousemove', desenharPonto);
         }
-        canvas.onmouseup = (event) => {
-            canvas.removeEventListener('mouseover', desenharPonto);
-            canvas.removeEventListener('mousemove', desenharPonto);
-        }
+        canvas.onmouseup = () => canvas.removeEventListener('mousemove', desenharPonto);
     </script>
 
 </body>

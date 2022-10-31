@@ -13,30 +13,9 @@
 <body>
 
     <canvas width="600" height="400"></canvas>
+    Escolha uma cor <input type="color">
 
-    <script>
-        let canvas = document.querySelector('canvas');
-        let brush = canvas.getContext('2d');
-
-        brush.fillStyle = 'lightgrey';
-        brush.fillRect(0, 0, 600, 400);
-        var radius = 10;
-
-        function desenharPonto(event) {
-            if (event.shiftKey) {
-                radius = radius + 0.1;
-            }
-            brush.fillStyle = () => 'red';
-            brush.beginPath();
-            brush.arc(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop, radius, 0, 2 * Math.PI);
-            brush.fill();
-        }
-        
-        canvas.onmousedown = function(event) {
-            canvas.addEventListener('mousemove', desenharPonto);
-        }
-        canvas.onmouseup = () => canvas.removeEventListener('mousemove', desenharPonto);
-    </script>
+    <script src="canvas2.js"></script>
 
 </body>
 

@@ -12,10 +12,6 @@ function desenhaCirculo(x, y, raio, cor) {
     pincel.fill();
 }
 
-desenhaCirculo(300, 200, raio + 20, "red"); // maior círculo
-desenhaCirculo(300, 200, raio + 10, "white");
-desenhaCirculo(300, 200, raio, "red"); // menor circulo
-
 function dispara(evento) {
     var x = evento.pageX - tela.offsetLeft;
     var y = evento.pageY - tela.offsetTop;
@@ -24,5 +20,9 @@ function dispara(evento) {
         alert("Acertou!");
     }
 }
+
+desenhaCirculo(300, 200, raio + 20, "red"); // maior círculo
+desenhaCirculo(300, 200, raio + 10, "white");
+desenhaCirculo(300, 200, raio, "red"); // menor circulo
 
 tela.addEventListener("click", dispara);

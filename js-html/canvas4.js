@@ -17,19 +17,29 @@ function limpaTela() {
 }
 
 var x = 3;
+var y = 50;
 var way = 1;
+var raio = 10;
+var derivadaRaio = 1;
 
 function atualizaTela() {
-    let limitRight = tela.width - 20;
-    let limitLeft = tela.offsetLeft;
-    //limpaTela();
-    desenhaCirculo(x + tela.offsetLeft, 20, 10);
+    let limitRight = tela.width - 10 - raio;
+    let limitLeft = tela.offsetLeft - 10 + raio;
+    limpaTela();
+    desenhaCirculo(x + tela.offsetLeft, y, raio);
     if (x > limitRight) {
         way = -1;
     } else if (x < limitLeft) {
         way = 1;
     }
     x = x + way;
+
+    if (raio > 50) {
+        derivadaRaio = -1;
+    } else if (raio <= 30 && raio > 10) {
+        derivadaRaio = 1;
+    }
+    raio = raio + derivadaRaio;
 }
 
 setInterval(atualizaTela, 2);

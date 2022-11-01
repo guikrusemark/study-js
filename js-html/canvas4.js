@@ -34,13 +34,12 @@ function atualizaTela() {
     }
     x = x + way;
 
-    if (raio > 50) {
+    if (raio > 40) {
         derivadaRaio = -1;
-    } else if (raio <= 30 && raio > 10) {
+    } else if (raio < 10) {
         derivadaRaio = 1;
     }
     raio = raio + derivadaRaio;
 }
 
-setInterval(atualizaTela, 2);
-document.write(x, " ", tela.offsetLeft, " ", tela.width);
+setInterval(atualizaTela, 20);

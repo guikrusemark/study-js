@@ -1,15 +1,27 @@
-function tocaSom(idElementoAudio) {
-    document.querySelector(idElementoAudio).play();
+
+const instrumentKeyList = document.querySelectorAll('.tecla');
+
+function playSound(audioElementId) {
+    document.querySelector(audioElementId).play();
 }
 
-const listaDeTeclas = document.querySelectorAll(".tecla");
+// SYNCHRONOUS EVENTS
 
-for (let contador = 0; contador < listaDeTeclas.length; contador++) {
-    const tecla = listaDeTeclas[contador];
-    const instrumento = tecla.classList[1];
-    const idAudio = `#som_${instrumento}`;
+for (let i = 0; i < instrumentKeyList.length; i++) {
+    const instrumentKey = instrumentKeyList[i];
+    const instrumentClassName = instrumentKey.classList[1];
+    const audioIdName = `#som_${instrumentClassName}`;
 
-    tecla.addEventListener("click", () => {
-        tocaSom(idAudio);
+    instrumentKey.addEventListener('click', () => {
+        playSound(audioIdName);
+    });
+
+    instrumentKey.addEventListener("keydown", (event) => {
+        if (event.key == "Enter") 
+            instrumentKey.classList.add("ativa");
+    });
+    instrumentKey.addEventListener("keyup", (event) => {
+        if (event.key == 'Enter') 
+            instrumentKey.classList.remove("ativa");
     });
 }
